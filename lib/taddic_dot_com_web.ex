@@ -38,7 +38,9 @@ defmodule TaddicDotComWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, formats: [:html, :json]
+      use Phoenix.Controller,
+        formats: [:html, :json],
+        layouts: [html: TaddicDotComWeb.Layouts]
 
       use Gettext, backend: TaddicDotComWeb.Gettext
 
@@ -50,7 +52,8 @@ defmodule TaddicDotComWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView
+      use Phoenix.LiveView,
+        layout: {TaddicDotComWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -87,9 +90,8 @@ defmodule TaddicDotComWeb do
       # Core UI components
       import TaddicDotComWeb.CoreComponents
 
-      # Common modules used in templates
+      # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
-      alias TaddicDotComWeb.Layouts
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

@@ -19,11 +19,11 @@ config :taddic_dot_com, TaddicDotCom.Repo,
 config :taddic_dot_com, TaddicDotComWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("PORT") || "4000")],
+  http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "/uBG5COm8NsMELt0tV78t3BR697cGAwbFiRlmbosJUxdB5jkMcisWwkBar+552Mc",
+  secret_key_base: "Gel7NegezTJuMAEk8rbi7Iyp0IOfF4SJp0oQzVN1DDGzV0EaQsacpDSqi8Son+Ii",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:taddic_dot_com, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:taddic_dot_com, ~w(--watch)]}
@@ -55,11 +55,10 @@ config :taddic_dot_com, TaddicDotComWeb.Endpoint,
 # Watch static and templates for browser reloading.
 config :taddic_dot_com, TaddicDotComWeb.Endpoint,
   live_reload: [
-    web_console_logger: true,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/taddic_dot_com_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
+      ~r"lib/taddic_dot_com_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
@@ -67,7 +66,7 @@ config :taddic_dot_com, TaddicDotComWeb.Endpoint,
 config :taddic_dot_com, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
-config :logger, :default_formatter, format: "[$level] $message\n"
+config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
@@ -77,8 +76,7 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :phoenix_live_view,
-  # Include HEEx debug annotations as HTML comments in rendered markup.
-  # Changing this configuration will require mix clean and a full recompile.
+  # Include HEEx debug annotations as HTML comments in rendered markup
   debug_heex_annotations: true,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true

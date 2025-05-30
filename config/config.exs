@@ -20,7 +20,7 @@ config :taddic_dot_com, TaddicDotComWeb.Endpoint,
     layout: false
   ],
   pubsub_server: TaddicDotCom.PubSub,
-  live_view: [signing_salt: "mlvz35JJ"]
+  live_view: [signing_salt: "4kjYAH2K"]
 
 # Configures the mailer
 #
@@ -36,24 +36,25 @@ config :esbuild,
   version: "0.17.11",
   taddic_dot_com: [
     args:
-      ~w(js/app.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/*),
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "4.0.9",
+  version: "3.4.3",
   taddic_dot_com: [
     args: ~w(
-      --input=assets/css/app.css
-      --output=priv/static/assets/css/app.css
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
     ),
-    cd: Path.expand("..", __DIR__)
+    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Configures Elixir's Logger
-config :logger, :default_formatter,
+config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 

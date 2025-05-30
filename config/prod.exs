@@ -9,7 +9,7 @@ config :taddic_dot_com, TaddicDotComWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configures Swoosh API Client
-config :swoosh, api_client: Swoosh.ApiClient.Req
+config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: TaddicDotCom.Finch
 
 # Disable Swoosh Local Memory Storage
 config :swoosh, local: false

@@ -17,7 +17,7 @@ config :taddic_dot_com, TaddicDotCom.Repo,
 # you can enable the server option below.
 config :taddic_dot_com, TaddicDotComWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "aXyu85z/SY1BOSPcFyYLvbzs21GBkzdi7+jrLyCuGsIKaLLupJ+TIakE0rJlh/Xq",
+  secret_key_base: "4QmcolJvmmTEthCH4kJpoHma+6NOkbq0OXSS8B8ikskRQzsCyBnSEp/Pglt3gM0e",
   server: false
 
 # In test we don't send emails

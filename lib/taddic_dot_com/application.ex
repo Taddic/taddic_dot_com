@@ -12,6 +12,8 @@ defmodule TaddicDotCom.Application do
       TaddicDotCom.Repo,
       {DNSCluster, query: Application.get_env(:taddic_dot_com, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: TaddicDotCom.PubSub},
+      # Start the Finch HTTP client for sending emails
+      {Finch, name: TaddicDotCom.Finch},
       # Start a worker by calling: TaddicDotCom.Worker.start_link(arg)
       # {TaddicDotCom.Worker, arg},
       # Start to serve requests, typically the last entry
