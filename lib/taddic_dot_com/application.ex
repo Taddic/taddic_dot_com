@@ -9,7 +9,6 @@ defmodule TaddicDotCom.Application do
   def start(_type, _args) do
     children = [
       TaddicDotComWeb.Telemetry,
-      TaddicDotCom.Repo,
       {DNSCluster, query: Application.get_env(:taddic_dot_com, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: TaddicDotCom.PubSub},
       # Start the Finch HTTP client for sending emails
