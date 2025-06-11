@@ -31,7 +31,6 @@ defmodule TaddicDotComWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :taddic_dot_com
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
