@@ -18,6 +18,10 @@ defmodule TaddicDotComWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/services", PageController, :services
+    get "/experience", PageController, :experience
+    get "/aboutme", PageController, :aboutme
+    get "/contact", PageController, :contact
   end
 
   # Other scopes may use custom stacks.
