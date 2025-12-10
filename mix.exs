@@ -76,15 +76,38 @@ defmodule TaddicDotCom.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "assets.setup", "assets.build"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind taddic_dot_com", "esbuild taddic_dot_com"],
+      setup: [
+        "deps.get",
+        "assets.setup",
+        "assets.build"
+      ],
+      "assets.setup": [
+        "tailwind.install --if-missing",
+        "esbuild.install --if-missing"
+      ],
+      "assets.build": [
+        "compile",
+        "tailwind taddic_dot_com",
+        "esbuild taddic_dot_com"
+      ],
       "assets.deploy": [
         "tailwind taddic_dot_com --minify",
         "esbuild taddic_dot_com --minify",
         "phx.digest"
       ],
-      precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
+      precommit: [
+        "compile --warnings-as-errors",
+        "deps.unlock --unused",
+        "format",
+        "test"
+      ],
+      prod: [
+        "deps.get --only prod",
+        "tailwind.install",
+        "esbuild.install",
+        "assets.build",
+        "assets.deploy"
+      ]
     ]
   end
 end
